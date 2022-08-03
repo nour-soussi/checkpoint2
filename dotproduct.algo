@@ -1,0 +1,79 @@
+        //en utilisant une fonction 
+
+FUNCTION dot(v1,v2: ARRAY_OF INTEGER) : FLOAT
+    VAR
+        resultat : FLOAT ;
+        i : INTEGER;
+    BEGIN
+        FOR(i:=0; i <v1.length; i++)
+            resultat := resultat+v1[i]*v2[i];
+        END FOR;
+        RETURN resultat ;
+    END
+
+
+ALGORITHM DOTPRODUCT
+VAR
+    v1,v2: ARRAY_OF INTEGER;
+    
+BEGIN
+    write("veuillez saisir la taille du vecteur ");
+    read(n);
+    write("saisir les coordonnees du premier vecteur");
+    FOR(i:=0;i<n;i++)
+        read(v1[i]);
+    END FOR
+    write("saisir les coordonnees du deuxieme vecteur");
+    FOR(i:=0;i<n;i++)
+        read(v2[i]);
+    END FOR
+    IF (dot(v1,v2)=0) THEN
+        write("ces deux vecteurs sont orthogonaux");
+    ELSE
+        write("ces deux vecteurs ne sont pas orthogonaux");
+    END_IF 
+END
+
+
+//******************************************************************************************************
+
+
+        //en utilisant une procedure 
+PROCEDURE procDOT(v1,v2: ARRAY_OF INTEGER;var resultat:FLOAT)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR(i:=0; i <v1.length; i++)
+        resultat := resultat+v1[i]*v2[i];
+    END FOR;
+END
+
+
+ALGORITHM DOTPRODUCT
+VAR
+    v1,v2: ARRAY_OF INTEGER;
+    ps:FLOAT;
+
+BEGIN
+    write("veuillez saisir la taille du vecteur ");
+    read(n);
+
+    write("saisir les coordonnees du premier vecteur");
+    FOR(i:=0;i<n;i++)
+        read(v1[i]);
+    END FOR
+
+    write("saisir les coordonnees du deuxieme vecteur");
+    FOR(i:=0;i<n;i++)
+        read(v2[i]);
+    END FOR
+
+    procDOT(v1,v2,ps);
+    IF (ps=0) THEN
+        write("ces deux vecteurs sont orthogonaux");
+    ELSE
+        write("ces deux vecteurs ne sont pas orthogonaux");
+    END_IF 
+
+END
+
